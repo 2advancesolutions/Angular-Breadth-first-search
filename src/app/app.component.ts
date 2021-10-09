@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
   ];
   public adjacencyList: any;
   public logList: any | undefined | null;
+  public title: string | undefined;
   ngOnInit(): void {
     this.adjacencyList = new Map();
     this.airports.forEach((airport: string) => {
@@ -39,12 +40,13 @@ export class AppComponent implements OnInit {
     this.adjacencyList.set(airport, []);
     this.logList = this.adjacencyList;
   }
-  public addEdge(origin: any, destination: any) {
+  public addEdge(origin: any, destination: any): void {
     this.adjacencyList.get(origin).push(destination);
     this.adjacencyList.get(destination).push(origin);
   }
 
   public bfs(): void {
+    this.title = 'Breath First Search';
     this.foundConnections = [];
     const visted = new Set();
     const queue = [this.airPortName];
@@ -53,14 +55,36 @@ export class AppComponent implements OnInit {
       const destinations = this.adjacencyList.get(airport);
       for (const destination of destinations) {
         if (destination === this.destinationLoc) {
-        console.log('found connection') 
-        this.foundConnections.push(destination);
+          console.log('found connection');
+          this.foundConnections.push(destination);
         }
         if (!visted.has(destination)) {
           visted.add(destination);
           queue.push(destination);
-          console.log(destination)
+          console.log(destination);
         }
+      }
+    }
+  }
+
+  public dfs(start: any, visted = new Set()): void {
+    this.title = 'Depth First Search';
+    if (this.foundConnections.length > 1) {
+      this.foundConnections = [];
+    }
+    visted.add(start);
+    const destinations = this.adjacencyList.get(start);
+    for (const destination of destinations) {
+      if (destination === this.destinationLoc) {
+        console.log('found connection');
+        if (this.foundConnections.length === 0) {
+          this.foundConnections.push(destination);
+        }
+        return;
+      }
+      if (!visted.has(destination)) {
+        console.log(destination);
+        this.dfs(destination, visted);
       }
     }
   }

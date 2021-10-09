@@ -9,13 +9,14 @@
  {{item | json}}
 </div>
 <br>
-<h1>BFS</h1>
+<h1>Type Of Alogrimth {{title ? title : 'Breadth first search'}}</h1>
 <br>
 Airport:<input type="text" [(ngModel)]="airPortName">  Find How Many Connections: <input type="text"  [(ngModel)]="destinationLoc">
 <br><br>
-<button type="button" style="color: blue;font-size: 14px;height: 30px;" (click)="bfs()">BFS Algo</button>
+<button type="button" style="background-color: blue;color: #fff;font-size: 14px;height: 30px;" (click)="bfs()">BFS Algo</button>
 
-{{airPortName}} - {{destinationLoc}}
+<button type="button" style="background-color: rgb(255, 0, 0);color: #fff;font-size: 14px;height: 30px;" (click)="dfs(airPortName)">DFS Algo</button>
+
 <br>
 
 <h1># Connections Founds For {{destinationLoc}}</h1>
