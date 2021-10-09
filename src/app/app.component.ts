@@ -55,13 +55,11 @@ export class AppComponent implements OnInit {
       const destinations = this.adjacencyList.get(airport);
       for (const destination of destinations) {
         if (destination === this.destinationLoc) {
-          console.log('found connection');
-          this.foundConnections.push(destination);
+          this.foundConnections.push(destinations);
         }
         if (!visted.has(destination)) {
           visted.add(destination);
           queue.push(destination);
-          console.log(destination);
         }
       }
     }
@@ -76,14 +74,12 @@ export class AppComponent implements OnInit {
     const destinations = this.adjacencyList.get(start);
     for (const destination of destinations) {
       if (destination === this.destinationLoc) {
-        console.log('found connection');
         if (this.foundConnections.length === 0) {
-          this.foundConnections.push(destination);
+          this.foundConnections.push(destinations);
         }
         return;
       }
       if (!visted.has(destination)) {
-        console.log(destination);
         this.dfs(destination, visted);
       }
     }
