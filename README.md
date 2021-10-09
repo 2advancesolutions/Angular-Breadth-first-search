@@ -1,4 +1,4 @@
-# Angular Breadth-first search
+# Angular Breadth-first search / Depth-first search
 
 Find List of Connectd Airports 
 
