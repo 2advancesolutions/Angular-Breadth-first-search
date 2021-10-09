@@ -18,7 +18,5 @@ Airport:<input type="text" [(ngModel)]="airPortName">  Find How Many Connections
 {{airPortName}} - {{destinationLoc}}
 <br>
 
-<h1>Connections Founds</h1>
-<div *ngFor="let c of foundConnections">
-  Found: {{c}}
-</div>
+<h1># Connections Founds For {{destinationLoc}}</h1>
+# {{foundConnections.length}}

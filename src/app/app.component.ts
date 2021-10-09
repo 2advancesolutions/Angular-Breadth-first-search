@@ -54,6 +54,7 @@ export class AppComponent implements OnInit {
       for (const destination of destinations) {
         if (destination === this.destinationLoc) {
         console.log('found connection') 
+        this.foundConnections.push(destination);
         }
         if (!visted.has(destination)) {
           visted.add(destination);
